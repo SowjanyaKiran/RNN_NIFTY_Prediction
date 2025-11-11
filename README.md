@@ -12,7 +12,7 @@ This repository contains a single Jupyter notebook that trains simple recurrent 
 **Loss/Metric**: MSE loss; MAE reported.  
 **Model Selection**: Best model chosen by lowest test RMSE on `Close`.
 
-## 1) What the notebook does
+# 1) What the notebook does
 
 1. **Downloads data** for `^NSEI` via `yfinance` (`START_DATE="2010-01-01"`, `END_DATE=None` for “up to latest”).  
 2. **(Optional) Decomposes** the `Close` series (multiplicative) for a quick seasonal/trend look (uses `statsmodels`).  
