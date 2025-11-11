@@ -2,17 +2,15 @@
 
 This repository contains a single Jupyter notebook that trains simple recurrent neural networks (SimpleRNN, LSTM, GRU) to predict the **NIFTY 50** index using historical data from Yahoo Finance.
 
-> **Notebook**: `RNN_NIFTY_Prediction.ipynb`  
-> **Ticker**: `^NSEI` (NIFTY 50, Yahoo Finance)  
-> **Date Range**: From `2010-01-01` to latest available (pulled live via `yfinance`)  
-> **Primary Target/Features**: By default `Close` only (univariate).  
-> **Sequence Length**: 60 timesteps.  
-> **Train/Test Split**: 80% / 20%  
-> **Scaling**: `MinMaxScaler` on selected features.  
-> **Loss/Metric**: MSE loss; MAE reported.  
-> **Model Selection**: Best model chosen by lowest test RMSE on `Close`.
-
----
+**Notebook**: `RNN_NIFTY_Prediction.ipynb`  
+**Ticker**: `^NSEI` (NIFTY 50, Yahoo Finance)  
+**Date Range**: From `2010-01-01` to latest available (pulled live via `yfinance`)  
+**Primary Target/Features**: By default `Close` only (univariate).  
+**Sequence Length**: 60 timesteps.  
+**Train/Test Split**: 80% / 20%  
+**Scaling**: `MinMaxScaler` on selected features.  
+**Loss/Metric**: MSE loss; MAE reported.  
+**Model Selection**: Best model chosen by lowest test RMSE on `Close`.
 
 ## 1) What the notebook does
 
@@ -37,9 +35,7 @@ This repository contains a single Jupyter notebook that trains simple recurrent 
    - Picks the **best model by RMSE**.
 8. **Visualizes** the last 200 test points (Actual vs. Predicted) for the best model.
 
----
-
-## 2) Environment & Requirements
+# 2) Environment & Requirements
 
 Install Python 3.9+ with the packages below. A quick `pip` setup:
 
@@ -55,7 +51,7 @@ pip install   yfinance   pandas   numpy   scikit-learn   matplotlib   seaborn   
 
 ---
 
-## 3) How to run
+# 3) How to run
 
 1. Open the notebook:
    - VS Code: open folder and the notebook; or
@@ -69,9 +65,7 @@ pip install   yfinance   pandas   numpy   scikit-learn   matplotlib   seaborn   
 
 If you hit rate limits or network issues, re-run the data download cell after a short delay.
 
----
-
-## 4) Key knobs you can tweak
+# 4) Key knobs you can tweak
 
 - **Ticker / Date Range**
   - `TICKER = "^NSEI"`
@@ -99,9 +93,7 @@ If you hit rate limits or network issues, re-run the data download cell after a 
   - Functions: `build_rnn`, `build_lstm`, `build_gru`
   - Each adds `Dropout` after each recurrent layer and a final `Dense(n_features)`.
 
----
-
-## 5) Outputs & interpretation
+# 5) Outputs & interpretation
 
 - **Console** prints per-model **RMSE, MAE, and runtime**.  
 - A **line plot** compares **Actual vs. Predicted** on the **last 200** test points for the selected best model.
@@ -109,25 +101,19 @@ If you hit rate limits or network issues, re-run the data download cell after a 
 
 > This is a **next-step regression** on scaled sequences; it does **not** forecast multiple days ahead by default. For multi-step forecasting, extend the prediction loop to roll inputs forward or train seq2seq models.
 
----
-
-## 6) Reproducibility tips
+# 6) Reproducibility tips
 
 - Set `END_DATE` to a fixed date.
 - Set NumPy/TensorFlow seeds (add `np.random.seed(42)` and the TF seed setup). Some nondeterminism can remain depending on backend/cuDNN.
 - Save models/metrics to disk if you want to compare runs over time.
 
----
-
-## 7) Troubleshooting
+# 7) Troubleshooting
 
 - **yfinance download issues**: Try again, or reduce requests. Check network connectivity.
 - **TensorFlow errors on CPU/GPU**: Ensure you have a compatible Python/TensorFlow and (for GPU) matching CUDA/cuDNN.
 - **Notebook RAM usage**: Lower `TIME_STEPS`, reduce model size, or trim the date range.
 
----
-
-## 8) Roadmap / ideas to extend
+# 8) Roadmap / ideas to extend
 
 - Add **walk-forward validation** and **time-series split**.
 - Try **learned optimizers** or **different losses** (e.g., Huber).
@@ -136,14 +122,10 @@ If you hit rate limits or network issues, re-run the data download cell after a 
 - Log experiments with **TensorBoard** or **Weights & Biases**.
 - Deploy the best model as an API or Streamlit app.
 
----
-
-## 9) Disclaimer
+# 9) Disclaimer
 
 This project is for **educational/research** purposes. It is **not** financial advice. Past performance does not guarantee future results. Use responsibly.
 
----
-
-## 10) License
+# 10) License
 
 Choose a license appropriate for your sharing needs (e.g., MIT, Apache-2.0). Update this section accordingly.
